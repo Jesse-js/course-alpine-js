@@ -49,12 +49,21 @@
       </button>
       <template x-if="open">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde iste sunt,
-          necessitatibus, molestias enim totam quae eligendi aspernatur ab illo ex
-          harum vel laudantium odit nulla odio tempore, labore minus.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde iste
+          sunt, necessitatibus, molestias enim totam quae eligendi aspernatur ab
+          illo ex harum vel laudantium odit nulla odio tempore, labore minus.
         </p>
       </template>
     </div>
     <hr />
+    <div
+      x-data="{
+        text: '',
+        placeholder: 'Enter text'
+    }">
+      <p x-html="text"></p>
+      <input type="text" x-model="placeholder">
+      <input type="text" x-model="text" x-bind:placeholder="placeholder"/>
+    </div>
   </body>
 </html>
