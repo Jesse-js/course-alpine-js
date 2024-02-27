@@ -8,12 +8,20 @@
 </head>
 <body>
     <div x-data="{
-        count: 0
+        count: 0,
+
+        increment() {
+            this.count++;
+        },
+
+        decrement() {
+            this.count--;
+        }
     }">
         <span x-text="count"></span>
 
-        <button x-on:click="count++">Increments</button>
-        <button x-on:click="count--">Decrements</button>
+        <button x-on:click="increment">Increments</button>
+        <button x-on:click="decrement">Decrements</button>
     </div>
 </body>
 </html>
