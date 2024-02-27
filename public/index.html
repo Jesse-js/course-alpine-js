@@ -28,7 +28,7 @@
       <button x-on:click="increment">Increments</button>
       <button x-on:click="decrement">Decrements</button>
     </div>
-    <hr>
+    <hr />
     <div
       x-data="{
         open: false,
@@ -47,6 +47,14 @@
       >
         Open
       </button>
+      <template x-if="open">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde iste sunt,
+          necessitatibus, molestias enim totam quae eligendi aspernatur ab illo ex
+          harum vel laudantium odit nulla odio tempore, labore minus.
+        </p>
+      </template>
     </div>
+    <hr />
   </body>
 </html>
