@@ -83,13 +83,49 @@
         color: 'text-primary'
     }"
     >
-      <p x-bind:class="color">Olá mundo</p>
+      <h1 x-bind:class="color">Olá mundo</h1>
       <button
         class="btn btn-success"
         @click="color = color === 'text-primary' ? 'text-danger' : 'text-primary'"
       >
         Change color
       </button>
+    </div>
+    <hr />
+    <!-- 'x-bin:' === ':' -->
+    <div
+      x-data="{
+        names: ['João', 'Alexandre', 'Maria'],
+        add(name, element) {
+            this.names.push(name);
+            element.text = '';
+        },
+
+        remove(name, element) {
+            this.names = this.names.filter(data => data !== name);
+            element.value = '';
+        }
+    }"
+    >
+      <ul>
+        <template x-for="name in names" :key="name">
+          <li x-text="name"></li>
+        </template>
+      </ul>
+      <label for="nameAdd">To add:</label>
+      <input
+        type="text"
+        name="nameAdd"
+        x-ref="nameAdd"
+        @keydown.enter="add($refs.nameAdd.value)"
+      />
+      <label for="nameRemove">To remove:</label>
+      <input
+        type="text"
+        name="nameRemove"
+        x-ref="nameRemove"
+        @keydown.enter="remove($refs.nameRemove.value)"
+      />
     </div>
   </body>
 </html>
