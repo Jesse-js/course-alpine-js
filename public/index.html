@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     <title>Alpine.js</title>
-</head>
-<body>
-    <div x-data="{
+  </head>
+  <body>
+    <div
+      x-data="{
         count: 0,
 
         increment() {
@@ -17,11 +21,32 @@
         decrement() {
             this.count--;
         }
-    }">
-        <span x-text="count"></span>
+    }"
+    >
+      <span x-text="count"></span>
 
-        <button x-on:click="increment">Increments</button>
-        <button x-on:click="decrement">Decrements</button>
+      <button x-on:click="increment">Increments</button>
+      <button x-on:click="decrement">Decrements</button>
     </div>
-</body>
+    <hr>
+    <div
+      x-data="{
+        open: false,
+        text: 'Open'
+    }"
+    >
+      <p x-show="open">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi laborum,
+        perspiciatis odit, minima doloremque quod sapiente officia cum amet
+        delectus consequatur ipsum facere obcaecati laudantium consectetur nobis
+        facilis ab ullam!
+      </p>
+      <button
+        @click="open = !open; text = open ? 'Close' : 'Open' "
+        x-text="text"
+      >
+        Open
+      </button>
+    </div>
+  </body>
 </html>
