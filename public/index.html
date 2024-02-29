@@ -104,12 +104,19 @@
         remove(name, element) {
             this.names = this.names.filter(data => data !== name);
             element.value = '';
+        },
+
+        removeButton(name) {
+            this.names = this.names.filter(data => data !== name);
         }
     }"
     >
       <ul>
         <template x-for="name in names" :key="name">
-          <li x-text="name"></li>
+          <div>
+
+            <li x-text="name"></li> <button class="btn btn-danger" @click="removeButton(name)">Remove</button>
+          </div>
         </template>
       </ul>
       <label for="nameAdd">To add:</label>
