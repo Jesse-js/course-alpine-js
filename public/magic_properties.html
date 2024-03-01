@@ -18,27 +18,30 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <title>Alpine.js - API</title>
+    <title>Alpine.js - Magic Properties</title>
   </head>
   <body>
     <div
       x-data="{
-        products: [],
+        changeColor: false,
         init() {
-            this.fetchProducts()
-        },
-        fetchProducts() {
-            fetch('https://fakestoreapi.com/products')
-                .then(response => response.json())
-                .then(data => this.products = data)
+            $watch('changeColor', (newValue, oldValue) => {
+                if (newValue) {
+                $refs.element.style.backgroundColor = 'red'
+                } else {
+                $refs.element.style.backgroundColor = 'lightgreen'
+                }
+            })
         }
     }"
     >
-    <ul>
-        <template x-for="product in products" :key="product.id">
-            <li x-text="product.title"></li>
-        </template>
-    </ul>
+      <div x-ref="element">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+        labore sapiente nulla facilis eum cupiditate ab vero illum nostrum
+        corrupti, obcaecati numquam nihil iusto doloribus reiciendis quas natus
+        cum magnam.
+      </div>
+      <button @click="changeColor = !changeColor; console.log($el)">Toggle</button>
     </div>
   </body>
 </html>
