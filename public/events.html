@@ -21,10 +21,14 @@
     <title>Alpine.js - Events</title>
 </head>
 <body>
-    <div x-data="{}" x-on:event.window="console.log('Peguei evento')">
+    <div x-data="{
+        func(event){
+          console.log(event.detail.foo)
+        }
+    }" x-on:event.window="func($event)">
 
     </div>
-    <div>
+    <div x-data>
         <button @click="$dispatch('event', { foo: 'bar' })">Send Event</button>
     </div>
 </body>
